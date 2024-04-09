@@ -172,6 +172,8 @@ def ex8():
     """
     (b): Decrypt the ciphertext obtained in part (a), and check that the original plaintext and decrypted ciphertext are 
     equal (why do we want to check this?)
+
+    Answer: To ensure that the encryption and decryption operations are invertible.
     """
     decrypted_plaintext = chacha20_decrypt(key, nonce, ciphertext)
     print("Decrypted plaintext: ", decrypted_plaintext.decode())
@@ -179,6 +181,8 @@ def ex8():
     """
     (c): Change one byte of the ciphertext and decrypt it using the same key and nonce as in part (a). What do you 
     observe?
+
+    Answer: Malleability. A potential attacker would be able to make controlled changes to the ciphertext, gradually uncovering the encryption key.
     """
     modified_ciphertext = ciphertext[:5] + bytes([ciphertext[5] ^ 0x0A]) + ciphertext[6:]
     decrypted_modified_plaintext = chacha20_decrypt(key, nonce, modified_ciphertext)
