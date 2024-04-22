@@ -36,7 +36,8 @@ with open("rsa_public_key.pem", "wb") as rsa_file:
 # Encryption
 script_directory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 file = open(script_directory + "\\Module_1\\dice.png", "rb")
-bytes = file.read(190) # greatest number of bytes that can be encrypted with RSA
+# bytes = file.read(190) # greatest number of bytes that can be encrypted with RSA
+bytes = file.read()
 plaintext = bytes
 
 ciphertext = public_key.encrypt(
